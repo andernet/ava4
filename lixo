@@ -1,0 +1,6 @@
+SELECT *
+FROM respostas AS r
+LEFT JOIN instrutores AS p ON r.id_instrutor = p.id_instrutor
+LEFT JOIN instrucoes AS intru ON r.id_instrucao = intru.id_instrucao
+LEFT JOIN alunos AS al ON r.id_aluno = al.id_aluno
+WHERE `id_instrutor` =0

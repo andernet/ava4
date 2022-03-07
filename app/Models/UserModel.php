@@ -8,7 +8,7 @@ class UserModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'users';
-    protected $primaryKey       = 'user_id';
+    protected $primaryKey       = 'id_user';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -17,7 +17,7 @@ class UserModel extends Model
     protected $allowedFields    = [
         'user_nome',
         'username',
-        'senha',
+        'password',
         'id_user_tipo'
     ];
 

@@ -48,14 +48,14 @@
             </div>
             <div class="col-12 col-sm-6">
               <div class="form-group">
-               <label for="senha">Senha</label>
-               <input type="text" class="form-control" name="senha" id="senha" value="<?= set_value('senha')?>">
+               <label for="password">password</label>
+               <input type="text" class="form-control" name="password" id="password" value="<?= set_value('password')?>">
              </div>
            </div>
            <div class="col-12 col-sm-6">
              <div class="form-group">
-              <label for="senha_conf">Confirmar Senha</label>
-              <input type="text" class="form-control" name="senha_conf" id="senha_conf" value="<?= set_value('senha_conf')?>">
+              <label for="password_conf">Confirmar password</label>
+              <input type="text" class="form-control" name="password_conf" id="password_conf" value="<?= set_value('password_conf')?>">
             </div>
           </div>
 

@@ -17,13 +17,17 @@
   
         <form class="" action="<?= base_url('auth/check') ?>" method="post">
           <?= csrf_field(); ?>
+          <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+           <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+
+         <?php endif?>
           <div class="form-group">
            <label for="username">Nome do usuário</label>
            <input type="text" placeholder="Ex: 2S Fulano"  class="form-control" name="username" id="username" value="<?= set_value('username') ?>">
           </div>
           <div class="form-group">
-           <label for="senha">Senha</label>
-           <input type="senha" placeholder="Ex: 2S Fulano"  class="form-control" name="senha" id="senha" value="<?= set_value('senha') ?>">
+           <label for="password">password</label>
+           <input type="password" placeholder="Ex: 2S Fulano"  class="form-control" name="password" id="password" value="<?= set_value('password') ?>">
           </div>
           
           <div class="row">

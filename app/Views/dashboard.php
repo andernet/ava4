@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <?= csrf_field(); ?>
+
+      <h1>Hello, <?= $userInfo['id_user'] ?></h1>
+      <a href="<?= site_url('auth/logout'); ?>">Logout</a>
+    </div>
+  </div>
+</div>

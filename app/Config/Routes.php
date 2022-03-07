@@ -33,6 +33,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->group('',['filter'=>'AuthCheck'], function($routes){
+    $routes->get('/dashboard', 'Home::index');
+    $routes->get('/', 'Auth::index');
+    $routes->get('/auth/register', 'Auth::register');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
