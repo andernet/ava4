@@ -7,8 +7,8 @@
 <section>
 
 </section>
-
-<a  href="<?= site_url("/auth/login") ?>">Login</a>
+welcome
+<a  href="<?= site_url("/auth/") ?>">Login</a>
 
 </footer>
 

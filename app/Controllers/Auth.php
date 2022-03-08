@@ -166,7 +166,7 @@ class Auth extends BaseController
                 $id_user = $user_info['id_user'];
                 session()->set('loggedUser', $id_user);
                 //dd(session());
-                return redirect()->to('auth');
+                return redirect()->to('home/logado');
             }
         }
     }

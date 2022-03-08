@@ -19,4 +19,23 @@ class Home extends BaseController
         return view('welcome_message');
 
     }
+
+    public function logado()
+    {
+        $userModel = new UserModel();
+        $loggedUserID = session()->get('loggedUser');
+        $userInfo = $userModel->find($loggedUserID);
+        $data =[
+            'title'=>'Dashboard',
+            'userInfo'=>$userInfo
+        ];
+        return view('/dashboard', $data);
+        //return view('welcome_message');
+
+    }
+
+    public function lista_alunos()
+    {
+        return view ('alunos/alunos.php');
+    }
 }
