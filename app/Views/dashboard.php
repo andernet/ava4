@@ -6,5 +6,9 @@
       <h1>Hello, <?= $userInfo['id_user'] ?></h1>
       <a href="<?= site_url('auth/logout'); ?>">Logout</a>
     </div>
+    <div class="row">
+      <a href="<?= site_url('home/lista_alunos'); ?>">lista de alunos</a>
+
+    </div>
   </div>
 </div>

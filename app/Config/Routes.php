@@ -40,6 +40,7 @@ $routes->group('',['filter'=>'AuthCheck'], function($routes){
 
     $routes->get('/home/lista_alunos', 'Home::lista_alunos');
 
+
 });
 
 /*
