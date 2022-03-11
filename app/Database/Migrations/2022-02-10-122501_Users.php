@@ -39,13 +39,29 @@ class Users extends Migration
                 //'default'        => 'current_timestamp()',
                         ]
         ]);
+        $data = [
+            'user_nome' => '123456',
+            'username' => '123456',
+            'password' => '$2y$10$3kjq1C8ZuHH12.MoKGJBM.p3vFCE1SgTW5T7v5T7uFVT0UwFH9vti',
+            'id_user_tipo' => '3',
+            'created_at' => '0000-00-00 00:00:00',
+            'updated_at' => '0000-00-00 00:00:00',
+        ];
 
         $this->forge->addKey('id_user', true);
         $this->forge->createTable('users', false);
+
+        $this->db->query("INSERT INTO users (user_nome, username, password, id_user_tipo, created_at, updated_at) VALUES (:user_nome:, :username:, :password:, :id_user_tipo:, :created_at:, :updated_at:)", $data);
+
+        //$this->db->table('users')->insert($data);
+
+        
     }
 
     public function down()
     {
         $this->forge->dropTable('users');
     }
+
+    #
 }
