@@ -38,4 +38,18 @@ class Home extends BaseController
     {
         return view ('alunos/alunos.php');
     }
+    
+    public function profile()
+    {
+        $userModel = new UserModel();
+        $loggedUserID = session()->get('loggedUser');
+        $userInfo = $userModel->find($loggedUserID);
+        $data =[
+            'title'=>'Profile',
+            'userInfo'=>$userInfo
+        ];
+        return view('/profile', $data);
+        //return view('welcome_message');
+
+    }
 }
