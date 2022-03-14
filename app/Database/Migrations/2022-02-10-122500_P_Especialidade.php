@@ -21,11 +21,11 @@ class Especialidade extends Migration
         ]);
 
         $this->forge->addKey('id_especialidade', true);
-        $this->forge->createTable('especialidade', false);
+        $this->forge->createTable('p_especialidade', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('especialidade');
+        $this->forge->dropTable('p_especialidade');
     }
 }

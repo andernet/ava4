@@ -21,11 +21,12 @@ class Tratamento extends Migration
         ]);
 
         $this->forge->addKey('id_tratamento', true);
-        $this->forge->createTable('tratamento', false);
+        $this->forge->createTable('p_tratamento', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('tratamento');
+        $this->forge->dropTable('p_tratamento');
     }
 }
+

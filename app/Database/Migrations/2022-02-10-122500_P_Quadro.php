@@ -21,11 +21,11 @@ class Quadro extends Migration
         ]);
 
         $this->forge->addKey('id_quadro', true);
-        $this->forge->createTable('quadro', false);
+        $this->forge->createTable('p_quadro', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('quadro');
+        $this->forge->dropTable('p_quadro');
     }
 }

@@ -11,11 +11,7 @@ class Auth extends BaseController
     public function __construct()
 	{
 		$this->userModel = new UserModel();
-		
 		helper (['form', 'url', 'form_validation']);
-        
-        // parent::__construct();
-        // $this->load->helper(array('form', 'url'));
     }
 
     public function index()
@@ -140,7 +136,7 @@ class Auth extends BaseController
         //echo "Checando usuário...........";
         $validation = $this->validate([
             'username'=>[
-                'rules'=>'required|is_not_unique[users.username]',
+                'rules'=>'required|is_not_unique[s_users.username]',
                 'errors'=>[
                     'required'=>'Username é obrigatório!',
                     'is_not_unique'=>'Usuário não cadastrato!'
@@ -168,12 +164,22 @@ class Auth extends BaseController
                 return redirect()->to('/auth')->withInput();
             }else{
                 $id_user = $user_info['id_user'];
+                $id_user_tipo = $user_info['id_user_tipo'];
                 session()->set('loggedUser', $id_user);
                 //dd(session());
                 return redirect()->to('home/logado');
             }
         }
     }
+    // $data = [
+    //                 'id_user' => $user_info['id_user'],
+    //                 'user_nome' => $user_info['user_nome'],
+    //                 'username' => $user_info['username'],
+    //                 'id_user_tipo' => $user_info['id_user_tipo'],
+    //                 'isLoggedIn' => true,
+    //                 ];
+
+    //         session()->set($data);
 
     // private function setUserSession($user){
     //     $data = [

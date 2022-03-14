@@ -1,3 +1,32 @@
+
+ //    $mpdf->AddPage('L', '', '', '', '', 25, 25, 10, 45, 18, 12);
+
+    // $mpdf->Output("certificados/$nome_arquivo.pdf", 'D');    
+
+    
+//}
+//include "download_pdf.php";
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 teste
 $2y$10$dp52CziLon3utj2mQg8jKOWnXugi8yHQQHT3Rp9MBPzct244MQ0cm
 

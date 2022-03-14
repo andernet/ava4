@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Models\UserModel;
 
 class Home extends BaseController
@@ -41,7 +40,7 @@ class Home extends BaseController
         ];
         //return view('/dashboard', $data);
         //return view('welcome_message');
-
+        
         echo view('templates/header', $data);
         echo view('/dashboard');
         echo view('templates/footer');

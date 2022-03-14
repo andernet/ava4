@@ -21,11 +21,11 @@ class Users_tipo extends Migration
         ]);
 
         $this->forge->addKey('id_user_tipo', true);
-        $this->forge->createTable('users_tipo', false);
+        $this->forge->createTable('p_users_tipo', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('users_tipo');
+        $this->forge->dropTable('p_users_tipo');
     }
 }

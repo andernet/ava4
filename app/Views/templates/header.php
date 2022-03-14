@@ -33,7 +33,8 @@
             <a class="nav-link" href="/home/lista_alunos">Lista de usuarios</a>
           </li>
         </ul>
-
+<a href="<?= site_url('auth/logout'); ?>">Logout</a>
+<a class="nav-link" href="/CertificadoController/lista">Certificados</a>
 
 
       <?php if (session()->get('isLoggedIn')): ?>

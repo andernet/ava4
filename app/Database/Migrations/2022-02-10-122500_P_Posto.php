@@ -21,11 +21,11 @@ class Posto extends Migration
         ]);
 
         $this->forge->addKey('id_posto', true);
-        $this->forge->createTable('posto', false);
+        $this->forge->createTable('p_posto', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('posto');
+        $this->forge->dropTable('p_posto');
     }
 }

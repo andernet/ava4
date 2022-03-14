@@ -22,12 +22,12 @@ class Status extends Migration
         ]);
 
         $this->forge->addKey('id_status', true);
-        $this->forge->createTable('status', false);
+        $this->forge->createTable('p_status', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('status');
+        $this->forge->dropTable('p_status');
     }
 }
 

@@ -21,11 +21,11 @@ class Om extends Migration
         ]);
 
         $this->forge->addKey('id_om', true);
-        $this->forge->createTable('om', false);
+        $this->forge->createTable('p_om', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('om');
+        $this->forge->dropTable('p_om');
     }
 }

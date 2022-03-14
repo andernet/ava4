@@ -26,12 +26,12 @@ class Cursos_tipo extends Migration
         ]);
 
         $this->forge->addKey('id_cursos_tipo', true);
-        $this->forge->createTable('cursos_tipo', false);
+        $this->forge->createTable('p_cursos_tipo', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('cursos');
+        $this->forge->dropTable('p_cursos_tipo');
     }
 }
 
