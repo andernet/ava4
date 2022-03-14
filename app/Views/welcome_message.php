@@ -12,7 +12,5 @@ welcome
 
 </footer>
 
-
-
 </body>
 </html>

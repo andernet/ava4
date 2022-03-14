@@ -20,15 +20,19 @@ class Auth extends BaseController
 
     public function index()
     {
-        return view('auth/login');
+        //return view('auth/login');
         // $userModel = new UserModel();
         // $loggedUserID = session()->get('loggedUser');
         // $userInfo = $userModel->find($loggedUserID);
-        // $data =[
-        //     'title'=>'Dashboard',
+        $data =[
+             'title'=>'Dashboard',
         //     'userInfo'=>$userInfo
-        // ];
+         ];
         // return view('/dashboard', $data);
+        //$data['user'] = $model->where('id', session()->get('id'))->first();
+        echo view('templates/header', $data);
+        echo view('auth/login');
+        echo view('templates/footer');
     }
 
     public function register()
@@ -193,3 +197,4 @@ class Auth extends BaseController
         }
     }
 }
+

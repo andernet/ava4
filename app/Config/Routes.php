@@ -33,6 +33,19 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+
+$routes->group('',['filter'=>'AlreadyLoggedIn'], function($routes){
+    
+    $routes->get('/auth/login', 'Auth::index');
+    $routes->get('/auth', 'Auth::index');
+    $routes->get('/auth/register', 'Auth::register');
+
+
+});
+
+
+
+
 $routes->group('',['filter'=>'AuthCheck'], function($routes){
     $routes->get('/home/dashboard', 'Home::dashboard');
     $routes->get('/', 'Auth::index');
@@ -43,6 +56,9 @@ $routes->group('',['filter'=>'AuthCheck'], function($routes){
 
 
 });
+
+
+
 
 /*
  * --------------------------------------------------------------------

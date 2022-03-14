@@ -24,6 +24,8 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'AuthCheck' => \App\Filters\AuthCheckFilter::class,
+        'AlreadyLoggedIn' => \App\Filters\AlreadyLoggedInFilter::class,
+
     ];
 
     /**

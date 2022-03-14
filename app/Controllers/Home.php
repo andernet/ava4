@@ -16,7 +16,17 @@ class Home extends BaseController
         //     'userInfo'=>$userInfo
         // ];
         // return view('/dashboard', $data);
-        return view('welcome_message');
+        //return view('welcome_message');
+
+        $data =[
+             'title'=>'Dashboard',
+        //     'userInfo'=>$userInfo
+         ];
+        // return view('/dashboard', $data);
+        //$data['user'] = $model->where('id', session()->get('id'))->first();
+        echo view('templates/header', $data);
+        echo view('welcome_message');
+        echo view('templates/footer');
 
     }
 
@@ -29,14 +39,25 @@ class Home extends BaseController
             'title'=>'Dashboard',
             'userInfo'=>$userInfo
         ];
-        return view('/dashboard', $data);
+        //return view('/dashboard', $data);
         //return view('welcome_message');
+
+        echo view('templates/header', $data);
+        echo view('/dashboard');
+        echo view('templates/footer');
 
     }
 
     public function lista_alunos()
     {
-        return view ('alunos/alunos.php');
+        $data =[
+             'title'=>'Dashboard',
+        //     'userInfo'=>$userInfo
+         ];
+        //return view ('alunos/alunos.php');
+        echo view('templates/header', $data);
+        echo view('/alunos/alunos');
+        echo view('templates/footer');
     }
     
     public function profile()

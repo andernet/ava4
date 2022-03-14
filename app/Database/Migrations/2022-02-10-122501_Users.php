@@ -30,15 +30,18 @@ class Users extends Migration
                 'type'       => 'INT',
                 'constraint' => '2',
             ],
-            'created_at'       => [
-                'type'           => 'DATETIME',
+            'created_at datetime default current_timestamp',
+    'updated_at datetime default current_timestamp on update current_timestamp',
+            //'created_at'       => [
+              //  'type'           => 'DATETIME',
                 //'default'        => 'CURRENT_TIMESTAMP',
-            ],
-            'updated_at'       => [
-                'type'           => 'DATETIME',
+           // ],
+            //'updated_at'       => [
+              //  'type'           => 'DATETIME',
                 //'default'        => 'current_timestamp()',
                         ]
-        ]);
+    // ]
+    );
         $data = [
             'user_nome' => '123456',
             'username' => '123456',
