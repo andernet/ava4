@@ -1,15 +1,17 @@
 <div class="container mt-5">
-    <?php echo anchor(base_url('register_aluno'), 'Novo aluno', ['class' => 'btn btn-success mb-3']) ?>
+    <?php echo anchor(base_url('/AlunosController/cad_aluno'), 'Novo aluno', ['class' => 'btn btn-success mb-3']) ?>
     <table class="table">
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>CPF</th>
+            <th>Curso</th>
             <th>Tratamento</th>
             <th>Posto</th>
             <th>Quadro</th>
             <th>Especialidade</th>
             <th>OM</th>
+            <th>Situação</th>
             <th>saram</th>
             <th>Cod aluno</th>
 
@@ -19,11 +21,13 @@
                 <td><?php echo $aluno['id_aluno'] ?></td>
                 <td><?php echo $aluno['nome_aluno'] ?></td>
                 <td><?php echo $aluno['cpf'] ?></td>
+                <td><?php echo $aluno['id_curso'] ?></td>
                 <td><?php echo $aluno['id_tratamento'] ?></td>
                 <td><?php echo $aluno['id_posto'] ?></td>
                 <td><?php echo $aluno['id_quadro'] ?></td>
                 <td><?php echo $aluno['id_especialidade'] ?></td>
                 <td><?php echo $aluno['id_om'] ?></td>
+                <td><?php echo $aluno['id_situcacao'] ?></td>
                 <td><?php echo $aluno['saram'] ?></td>
                 <td><?php echo $aluno['cod_aluno'] ?></td>
 

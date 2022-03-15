@@ -34,11 +34,14 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 
+
 $routes->group('',['filter'=>'AlreadyLoggedIn'], function($routes){
     
     $routes->get('/auth/login', 'Auth::index');
     $routes->get('/auth', 'Auth::index');
     $routes->get('/auth/register', 'Auth::register');
+    $routes->get('/cad_user', 'UserController::cad_user');
+    //$routes->match(['get','post'],'cad_user', 'UserController::cad_user', ['filter' => 'noauth']);
 
 
 });

@@ -44,6 +44,10 @@ class CertificadoController extends BaseController
 		// Saves file on the server as 'filename.pdf'
 		
 	 }
+
+	 public function lista_certificados(){
+	 	
+	 }
 }
 
 

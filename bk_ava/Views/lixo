@@ -1,0 +1,96 @@
+teste
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <title>Users</title>
+
+    <style>
+        ul.pagination li {
+            display: inline;
+        }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        ul.pagination li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
+    <script>
+        function confirma() {
+            if (!confirm('Desejar excluir o usuário?')) {
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+login.php
+-----------------------------
+
+//$routes->get('/', 'Home::index');
+//$routes->get('/', 'User::index');
+//$routes->get('document', 'Document::index');
+//$routes->get('delete', 'User::delete'); 
+$routes->add('lista_usuarios', 'User::lista_usuarios');
+$routes->get('register', 'User::register');
+$routes->add('login', 'User::login');
+
+//alunos
+$routes->add('lista_alunos', 'Alunos::lista_alunos');
+//$routes->match(['get','post'],'register_aluno', 'Alunos::register_aluno', ['filter' => 'noauth']);
+$routes->get('register_aluno', 'Alunos::register_aluno');
+
+//$routes->get('/', 'Users::index', ['filter' => 'noauth']);
+$routes->get('logout', 'Users::logout');
+$routes->match(['get','post'],'register', 'Users::register', ['filter' => 'noauth']);
+//$routes->match(['get','post'],'profile', 'Users::profile',['filter' => 'auth']);
+$routes->get('dashboard', 'Dashboard::index',['filter' => 'auth']);
+
+------------------------
+
+<link href="bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+<div class="container mt-5">
+         <div class="login-main-text">
+            <h2>Application<br> Login Page</h2>
+            <p>Login or register from here to access.</p>
+ 
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form>
+                  <div class="form-group">
+                     <label>User Name</label>
+                     <input type="text" class="form-control" placeholder="User Name">
+                  </div>
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" class="form-control" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-black">Login</button>
+                  <button type="submit" class="btn btn-secondary">Register</button>
+               </form>
+            </div>
+         </div>

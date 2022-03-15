@@ -35,6 +35,8 @@
         </ul>
 <a href="<?= site_url('auth/logout'); ?>">Logout</a>
 <a class="nav-link" href="/CertificadoController/lista">Certificados</a>
+<a class="nav-link" href="/AlunosController/lista_alunos">Lista de Alunos</a>
+<a class="nav-link" href="/UserController/cad_user">Cad User</a>
 
 
       <?php if (session()->get('isLoggedIn')): ?>
