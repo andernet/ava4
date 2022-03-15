@@ -15,49 +15,19 @@ class S_Certificados extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_tratamento'       => [
-                'type'       => 'INT',
-                'constraint' => 5,
+
+            'id_aluno'          => [
+                'type'           => 'INT',
+                'constraint'     => 5,
                 'unsigned'       => true,
-
-                // 'id_tratamento'          => [
-                // 'type'           => 'INT',
-                // 'constraint'     => 5,
-                // 'unsigned'       => true,
-                // 'auto_increment' => true,
-
-
-
-
-
-
-
-
-
-
-
-                //'unsigned' => TRUE,
-            //'CONSTRAINT `TABLENAME_users_foreign` FOREIGN KEY(`id_tratamento`) REFERENCES `p_tratamento`(`id`)'
             ],
-            // 'curso_descricao'       => [
-            //     'type'       => 'VARCHAR',
-            //     'constraint' => '11',
-            // ],
-            // 'id_status'       => [
-            //     'type'       => 'INT',
-            //     'constraint' => '2',
-            // ]
 
         ]);
 
         $this->forge->addKey('id_certificado', true);
-        $this->forge->addForeignKey('id_tratamento', 'p_tratamento', 'id_tratamento', 'CASCADE', 'CASCADE');
-
-
+        $this->forge->addForeignKey('id_aluno', 's_alunos', 'id_aluno', 'CASCADE', 'CASCADE');
 
         $this->forge->createTable('s_certificados', false);
-        
-        
         
     }
 

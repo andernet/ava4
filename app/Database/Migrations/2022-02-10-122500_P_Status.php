@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Status extends Migration
+class P_Status extends Migration
 {
     public function up()
     {
@@ -15,14 +15,31 @@ class Status extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'status'       => [
+                'type'       => 'INT',
+                'constraint' => '2',
+            ],
             'status_descricao'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '11',
             ]
-        ]);
+            
+            ]);
 
+        $data = [
+            'status' => 1,
+            'status_descricao' => 'INATIVO',
+        ];
+
+        $data1 = [
+            'status' => 2,
+            'status_descricao' => 'ATIVO',
+        ];
         $this->forge->addKey('id_status', true);
         $this->forge->createTable('p_status', false);
+
+        $this->db->query("INSERT INTO p_status (status, status_descricao) VALUES (:status:, :status_descricao:)", $data);
+        $this->db->query("INSERT INTO p_status (status, status_descricao) VALUES (:status:, :status_descricao:)", $data1);
     }
 
     public function down()

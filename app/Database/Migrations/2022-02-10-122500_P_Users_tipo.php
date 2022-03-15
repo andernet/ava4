@@ -3,7 +3,7 @@
 namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 
-class Users_tipo extends Migration
+class P_Users_tipo extends Migration
 {
     public function up()		 	
     {

@@ -19,6 +19,10 @@ class Cursos extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
+            'curso_periodo'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+            ],
             'curso_descricao'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '11',

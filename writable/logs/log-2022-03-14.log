@@ -146,3 +146,7 @@ CRITICAL - 2022-03-14 14:44:47 --> Cannot declare class App\Database\Migrations\
 ERROR - 2022-03-14 14:45:55 --> Table 's_certificados' already exists
 ERROR - 2022-03-14 14:46:40 --> Referencing column 'id_tratamento' and referenced column 'id_tratamento' in foreign key constraint 's_certificados_id_tratamento_foreign' are incompatible.
 ERROR - 2022-03-14 19:30:47 --> Unknown table 'ava.s_cursos'
+ERROR - 2022-03-14 23:07:31 --> Table 'p_cursos_tipo' already exists
+ERROR - 2022-03-14 23:09:52 --> Table 'ava.s_users' doesn't exist
+ERROR - 2022-03-14 23:10:27 --> Table 'ava.s_users' doesn't exist
+ERROR - 2022-03-14 23:12:29 --> Table 'p_status' already exists

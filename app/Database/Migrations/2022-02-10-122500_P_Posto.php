@@ -3,7 +3,7 @@
 namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 
-class Posto extends Migration
+class P_Posto extends Migration
 {
     public function up()		 	
     {

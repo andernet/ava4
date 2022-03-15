@@ -4,34 +4,34 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class P_Cursos_tipo extends Migration
+class P_Cursos_curriculo extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_cursos_tipo'          => [
+            'id_cursos_curriculo'          => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'cursos_tipo_sigla'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
+            'cursos_curriculo'       => [
+                'type'       => 'text',
+                //'constraint' => '250',
             ],
-            'cursos_tipo_descricao'       => [
+            'cursos_curriculo_carga'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '11',
+                'constraint' => '10',
             ],
         ]);
 
-        $this->forge->addKey('id_cursos_tipo', true);
-        $this->forge->createTable('p_cursos_tipo', false);
+        $this->forge->addKey('id_cursos_curriculo', true);
+        $this->forge->createTable('p_cursos_curriculo', false);
     }
 
     public function down()
     {
-        $this->forge->dropTable('p_cursos_tipo');
+        $this->forge->dropTable('p_cursos_curriculo');
     }
 }
 

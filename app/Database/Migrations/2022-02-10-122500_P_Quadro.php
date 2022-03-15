@@ -3,7 +3,7 @@
 namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 
-class Quadro extends Migration
+class P_Quadro extends Migration
 {
     public function up()		 	
     {

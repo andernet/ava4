@@ -3,7 +3,7 @@
 namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 
-class Especialidade extends Migration
+class P_Especialidade extends Migration
 {
     public function up()		 	
     {

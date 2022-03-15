@@ -12,7 +12,7 @@
         <div id="body">
             <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
         </div>
-        <a class="nav-link" href="/CertificadoController/geraPDF">Certificados</a>
+        <a class="nav-link" href="/CertificadoController/geraPDF" target="_blank">Certificados</a>
     </div>
 </body>
  

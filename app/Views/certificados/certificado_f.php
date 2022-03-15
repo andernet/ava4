@@ -26,7 +26,7 @@ $consulta = array(
     <style>
         body{
             font-family: "Times New Roman", Times, serif;
-            background-image: url("img/backf.png") no-repeat;
+            background-image: url("img/dom.png") no-repeat;
             background-position: center;
             background-image-resolution:300dpi;
             background-image-resize:6;
