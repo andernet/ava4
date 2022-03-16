@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
- 
-<head>
-    <meta charset="utf-8">
-    <title>Welcome to CodeIgniter</title>
-</head>
- 
-<body>
-    <div id="container">
-        <h1>Welcome to CodeIgniter!</h1>
-        <div id="body">
-            <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+<div class="container mt-5">
+    <h1>Pesquisar aluno</h1>
+
+    <form class="" action="<?= base_url('/CertificadoController/select_certificado/'); ?>" method="get">
+        <div class="container mt-5">
+            <label for="nome_aluno">Nome</label>
+            <input type="text" class="form-control" name="nome_aluno" placeholder="Ex: 2S Fulano" />
         </div>
-        <a class="nav-link" href="/CertificadoController/geraPDF" target="_blank">Certificados</a>
-    </div>
-</body>
- 
-</html>
+        <div class="container mt-5">
+            <div class="col-12 col-sm-4">
+                <button type="submit" class="btn btn-primary">Pesquisar/Gerar</button>
+            </div>
+        </div>
+        <!--  <a class="nav-link" href="/CertificadoController/geraPDF" target="_blank">Certificados</a> -->
+    </form>
+</div>

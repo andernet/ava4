@@ -14,6 +14,7 @@
             <th>Situação</th>
             <th>saram</th>
             <th>Cod aluno</th>
+            <th>Ações</th>
 
         </tr>
         <?php foreach ($alunos as $aluno) : ?>

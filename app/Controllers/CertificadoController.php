@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\UserModel;
+use App\Models\AlunosModel;
 
 class CertificadoController extends BaseController
 {
+	public function __construct()
+	{
+		$this->userModel = new AlunosModel();
+
+	}
     public function index()
     {
     	echo view('templates/header');
@@ -45,7 +50,22 @@ class CertificadoController extends BaseController
 		
 	 }
 
-	 public function lista_certificados(){
+	 public function select_certificado($nome_aluno = null)
+	 {
+	 	$db      = \Config\Database::connect();
+		$builder = $db->table('s_alunos');
+
+	 	//$nome_aluno = '2';
+	 	//$model = new AlunosModel;
+		
+		$builder->where('nome_aluno', $nome_aluno);
+		$query = $builder->get();
+		
+		echo '<pre>';
+		print_r($query->getResult());
+		echo '</pre>';
+
+
 	 	
 	 }
 }
