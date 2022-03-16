@@ -1,19 +1,11 @@
 <?php
+echo '<pre>';
+// mostra todos os indíces possíveis para a matriz de variáveis
 
-$consulta = array(
-	'tratamento' => 'O',
-	'posto' => 'O',
-	'especialidade' => 'O',
-	'nome_aluno' => 'O',
-	'curso' => 'O',
-	'periodo' => 'O',
-	'cod' => 'O',
-	'nome_aluno' => 'O',
-);
+print_r(get_defined_vars());
+echo '</pre>';
 
-
-
-	
+echo $dados->cpf;
 
 ?>
 	<!DOCTYPE html>
@@ -50,7 +42,13 @@ $consulta = array(
         }
     </style>
     <body>
-        <div align = "center">
+
+
+
+
+
+          
+                   <div align = "center">
             <table width = "900" border = "0" align="center">
                 <tr>
                     <td align = "center"><h1>MINIST&Eacute;RIO DA DEFESA</h1></td>
@@ -68,12 +66,12 @@ $consulta = array(
                     <td align = "center"><h6>CERTIFICADO</h6></td>
                 </tr>
                 <tr>
-                    <td align = "center">Certifico que '.$consulta['tratamento'].'</td>
+                    <td align = "center">Certifico que ></td>
                 </tr>
             </table>
             <table width = "900" border = "0" >
                 <tr>
-                    <td align = "center"><h2><b>'.$consulta['posto'].' '.$consulta['especialidade'].' '.utf8_encode($consulta['nome_aluno']).'</b></h2></td>
+                    <td align = "center"><h2><b>'.$consulta['posto'].' '.$consulta['especialidade'].' '.utf8_encode().'</b></h2></td>
                 </tr>
                 <tr>
                     <td align = "center">concluiu, com aproveitamento, o <b>' .$consulta['curso'].'</b>, 

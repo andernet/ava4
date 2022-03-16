@@ -43,7 +43,8 @@ $routes->group('',['filter'=>'AlreadyLoggedIn'], function($routes){
     $routes->get('/cad_user', 'UserController::cad_user');
     //$routes->match(['get','post'],'cad_user', 'UserController::cad_user', ['filter' => 'noauth']);
 
-    $routes->get('/select_certificado/(:any)', 'CertificadoController::select_certificado/$1' );
+    //$routes->get('/select_certificado/(:any)', 'CertificadoController::select_certificado/$1' );
+    $routes->get('/select_certificado/(:num)', 'CertificadoController::select_certificado/$1' );
 
 
 });
