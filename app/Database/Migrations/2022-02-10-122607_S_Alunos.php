@@ -58,6 +58,7 @@ class Alunos extends Migration
             'cod_aluno'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '15',
+                'unique'            => true,
             ],
             'password'       => [
                 'type'       => 'VARCHAR',

@@ -24,6 +24,8 @@ class S_Certificados_emitidos extends Migration
             'cod_verificacao'          => [
                 'type'       => 'VARCHAR',
                 'constraint' => '60',
+                'unique'            => true,
+
             ],
 
         ]);

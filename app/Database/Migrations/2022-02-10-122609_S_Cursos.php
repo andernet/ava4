@@ -25,7 +25,7 @@ class Cursos extends Migration
             ],
             'curso_descricao'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '11',
+                'constraint' => '50',
             ],
             'id_status'       => [
                 'type'       => 'INT',

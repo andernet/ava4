@@ -26,7 +26,13 @@ class AlunosController extends ResourceController
     {
         echo view('templates/header');
         echo view('templates/nav');
-		return view('alunos/lista_alunos', [
+        $db      = \Config\Database::connect();
+        $builder = $db->table('s_alunos a');
+        $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
+		
+
+
+        return view('alunos/lista_alunos', [
 			'alunos' => $this->alunosModel->paginate(10),
 			'pager' => $this->alunosModel->pager
 		]);

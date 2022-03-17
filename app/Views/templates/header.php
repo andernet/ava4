@@ -13,6 +13,14 @@
 
             return true;
         }
+
+        function gerar() {
+            if (!confirm('Desejar gerar Certificado para esse aluno?')) {
+                return false;
+            }
+
+            return true;
+        }
     </script>
   </head>
   <body>

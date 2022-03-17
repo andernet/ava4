@@ -36,9 +36,14 @@
                     <?php echo anchor('user/edit/' . $aluno['id_aluno'], 'Editar', ['class' => 'btn btn-primary']) ?>
                         -
                     <?php echo anchor('user/delete/' . $aluno['id_aluno'], "<button type='button' class='btn btn-danger'>Excluir</button>", ['onclick' => 'return confirma()']) ?>
+                        -
 
+                    <?php echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank', 'onclick' => 'return gerar()']) ?>
+                    -
 
-                    <?php echo anchor('CertificadoController/select_certificado/' . $aluno['id_aluno'], 'Certificado', ['class' => 'btn btn-warning', 'target'=>'_blank']) ?>
+                    <?php echo anchor('CertificadoController/select_certificado/' . $aluno['cod_aluno'], 'Certificado', ['class' => 'btn btn-warning', 'target'=>'_blank']) ?>
+                    
+
 
 
         
