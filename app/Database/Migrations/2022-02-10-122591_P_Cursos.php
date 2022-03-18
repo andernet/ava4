@@ -19,13 +19,17 @@ class Cursos extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
+            'curso_descricao'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+            ],
             'curso_periodo'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
-            'curso_descricao'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
+            'ano_curso'       => [
+                'type'       => 'INT',
+                'constraint' => '4',
             ],
             'id_status'       => [
                 'type'       => 'INT',
@@ -34,12 +38,14 @@ class Cursos extends Migration
         ]);
 
         $this->forge->addKey('id_curso', true);
-        $this->forge->createTable('s_cursos', false);
+        $this->forge->createTable('p_cursos', false);
+
+        $this->db->query("INSERT INTO p_cursos (curso_sigla, curso_descricao) VALUES ('CBI', 'Curso Básico de Inteligência'), ('CTIC', 'Curso para Tratamento de Informações Classificadas'), ('CAI', 'Curso de Análise de Inteligência'), ('CBI-OF', 'Curso Básico de Inteligência para Oficiais'), ('CBI-GD', 'Curso Básico de Inteligência para Graduados'), ('CAVI-OF', 'Curso Avançado de Inteligência para Oficiais'), ('CAVI-GD', 'Curso Avançado de Inteligência para Graduados'), ('CBOI', 'Curso Básico de Operações')");
     }
 
     public function down()
     {
-        $this->forge->dropTable('s_cursos');
+        $this->forge->dropTable('p_cursos');
     }
 }
 

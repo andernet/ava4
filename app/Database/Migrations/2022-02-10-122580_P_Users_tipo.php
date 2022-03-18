@@ -22,6 +22,8 @@ class P_Users_tipo extends Migration
 
         $this->forge->addKey('id_user_tipo', true);
         $this->forge->createTable('p_users_tipo', false);
+
+        $this->db->query("INSERT INTO p_users_tipo (user_tipo_descricao) VALUES ('ADM'), ('DPL'), ('ALUNO')");
     }
 
     public function down()

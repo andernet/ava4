@@ -17,16 +17,14 @@ class P_Cursos_tipo extends Migration
             ],
             'cursos_tipo_sigla'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
-            ],
-            'cursos_tipo_descricao'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '11',
+                'constraint' => '20',
             ],
         ]);
 
         $this->forge->addKey('id_cursos_tipo', true);
         $this->forge->createTable('p_cursos_tipo', false);
+
+        $this->db->query("INSERT INTO p_cursos_tipo (cursos_tipo_sigla) VALUES ('EAD'), ('PRESENCIAL'), ('EAD / PRESENCIAL')");
     }
 
     public function down()

@@ -14,7 +14,7 @@ class P_Quadro extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'quadro_descricao'       => [
+            'quadro'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ],
@@ -22,6 +22,8 @@ class P_Quadro extends Migration
 
         $this->forge->addKey('id_quadro', true);
         $this->forge->createTable('p_quadro', false);
+
+         $this->db->query("INSERT INTO p_quadro (quadro) VALUES ('QOAV'),('QOINT'),('QOINF'),('QOENG'),('QOMED'),('QODENT'),('QOFARM'),('QOAP'),('QSCON'),('QTA (*)'),('QOECTA'),('QOEAV'),('QOEFOT'),('QOEMET'),('QOESUP'),('QOEARM'),('QOCON'),('QOE'),('QOECOM'),('QTA'),('QFO'),('QOEA'),('QFG'),('QCB'),('QUESA'),('QSS'),('QCOA'),('QSD')");
     }
 
     public function down()
@@ -29,3 +31,5 @@ class P_Quadro extends Migration
         $this->forge->dropTable('p_quadro');
     }
 }
+
+

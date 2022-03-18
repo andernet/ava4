@@ -26,20 +26,12 @@ class P_Status extends Migration
             
             ]);
 
-        $data = [
-            'status' => 1,
-            'status_descricao' => 'INATIVO',
-        ];
-
-        $data1 = [
-            'status' => 2,
-            'status_descricao' => 'ATIVO',
-        ];
+        
         $this->forge->addKey('id_status', true);
         $this->forge->createTable('p_status', false);
 
-        $this->db->query("INSERT INTO p_status (status, status_descricao) VALUES (:status:, :status_descricao:)", $data);
-        $this->db->query("INSERT INTO p_status (status, status_descricao) VALUES (:status:, :status_descricao:)", $data1);
+      
+        $this->db->query("INSERT INTO p_status (status, status_descricao) VALUES ('1', 'INATIVO'), ('2', 'ATIVO')");
     }
 
     public function down()
