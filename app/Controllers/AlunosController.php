@@ -27,7 +27,7 @@ class AlunosController extends ResourceController
         echo view('templates/header');
         echo view('templates/nav');
         $db      = \Config\Database::connect();
-        $builder = $db->table('s_alunos a');
+        $builder = $db->table('s_aluno a');
         $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
 		
 

@@ -14,7 +14,7 @@ class P_Tratamento extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'tratamento_descricao'       => [
+            'tratamento'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ],
@@ -22,6 +22,8 @@ class P_Tratamento extends Migration
 
         $this->forge->addKey('id_tratamento', true);
         $this->forge->createTable('p_tratamento', false);
+
+        $this->db->query("INSERT INTO p_tratamento (tratamento) VALUES ('o'), ('a')");
     }
 
     public function down()

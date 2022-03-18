@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\AlunosModel;
+use App\Models\UserModel;
+use App\Libraries\Hash;
 
 class CertificadoController extends BaseController
 {
@@ -43,9 +45,6 @@ class CertificadoController extends BaseController
 		//$mpdf->Output("$nome_arquivo.pdf", 'I');
 		return redirect($mpdf->Output("$nome_arquivo.pdf", 'I'))->to( site_url('/') );
 		//$mpdf->Output('arjun.pdf','D'); 
-
-
-		// Saves file on the server as 'filename.pdf'
 		
 	 }
 
@@ -57,7 +56,7 @@ class CertificadoController extends BaseController
 		// $builder->select('a.cpf, a.id_curso');
 
 
-		$query = $db->query('SELECT cpf FROM s_alunos LIMIT 1');
+		$query = $db->query('SELECT cpf FROM s_aluno LIMIT 1');
 		$row   = $query->getRowArray();
 		//echo $row['cpf'];
 
@@ -70,8 +69,12 @@ class CertificadoController extends BaseController
 		//dd($data);
 
 		//$data = '234234234234';
-		$builder = $db->table('s_certificados_emitidos');
-		$builder->set('cod_verificacao ', $cod_aluno . $row['cpf']);
+		$builder = $db->table('s_certificado_emitido');
+        //$cod_hash = ($cod_aluno . $row['cpf']);
+        $cod_hash = Hash($cod_aluno . $row['cpf']);
+        //dd($cod_hash);
+
+		$builder->set('cod_verificacao ', $cod_hash);
 		$builder->insert();
 		// Produces: INSERT INTO mytable (`name`) VALUES ('{$name}')
 	 }
@@ -79,7 +82,7 @@ class CertificadoController extends BaseController
 	 public function select_certificado($cod_aluno = null)
 	 {
 	 	$db      = \Config\Database::connect();
-		$builder = $db->table('s_alunos a');
+		$builder = $db->table('s_aluno a');
 		$builder->where('cod_aluno ', $cod_aluno );
 		
 
@@ -90,8 +93,8 @@ class CertificadoController extends BaseController
 		$builder->join('p_om o', 'o.id_om = a.id_om');
 		$builder->join('p_posto p', 'p.id_posto = a.id_posto');
 		$builder->join('p_tratamento t', 't.id_tratamento = a.id_tratamento');
-		$builder->join('s_cursos c', 'c.id_curso = a.id_curso');
-		$builder->join('s_certificados_emitidos c-e', 'c-e.id_aluno = a.id_aluno');
+		$builder->join('s_curso c', 'c.id_curso = a.id_curso');
+		$builder->join('s_certificado_emitido c-e', 'c-e.id_aluno = a.id_aluno');
 
 		//$query = $builder->get();
 

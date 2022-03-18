@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Libraries\Hash;
 
+
 use CodeIgniter\Validation\Validation;
 
 class Auth extends BaseController
@@ -136,7 +137,7 @@ class Auth extends BaseController
         //echo "Checando usuário...........";
         $validation = $this->validate([
             'username'=>[
-                'rules'=>'required|is_not_unique[s_users.username]',
+                'rules'=>'required|is_not_unique[s_user.username]',
                 'errors'=>[
                     'required'=>'Username é obrigatório!',
                     'is_not_unique'=>'Usuário não cadastrato!'

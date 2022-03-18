@@ -16,11 +16,11 @@ class P_Posto extends Migration
             ],
             'hierarquia'       => [
                 'type'       => 'INT',
-                'constraint' => '2',
+                'constraint' => 2,
             ],
             'posto_sigla'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '10',
+                'constraint' => '5',
             ],
             'posto_descricao'       => [
                 'type'       => 'VARCHAR',

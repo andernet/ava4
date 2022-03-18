@@ -28,7 +28,7 @@
                 <td><?php echo $aluno['id_quadro'] ?></td>
                 <td><?php echo $aluno['id_especialidade'] ?></td>
                 <td><?php echo $aluno['id_om'] ?></td>
-                <td><?php echo $aluno['id_situcacao'] ?></td>
+                <td><?php echo $aluno['id_situacao'] ?></td>
                 <td><?php echo $aluno['saram'] ?></td>
                 <td><?php echo $aluno['cod_aluno'] ?></td>
 
@@ -38,7 +38,9 @@
                     <?php echo anchor('user/delete/' . $aluno['id_aluno'], "<button type='button' class='btn btn-danger'>Excluir</button>", ['onclick' => 'return confirma()']) ?>
                         -
 
-                    <?php echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank', 'onclick' => 'return gerar()']) ?>
+                    <?php //echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank', 'onclick' => 'return gerar()']) 
+                    echo '-' ?>
+                    <?php echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank']) ?>
                     -
 
                     <?php echo anchor('CertificadoController/select_certificado/' . $aluno['cod_aluno'], 'Certificado', ['class' => 'btn btn-warning', 'target'=>'_blank']) ?>

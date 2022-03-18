@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class AlunosModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 's_alunos';
+    protected $table            = 's_aluno';
     protected $primaryKey       = 'id_aluno';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
