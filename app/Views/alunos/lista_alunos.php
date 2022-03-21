@@ -1,6 +1,7 @@
 <div class="container mt-5">
     <?php echo anchor(base_url('/AlunosController/cad_aluno'), 'Novo aluno', ['class' => 'btn btn-success mb-3']) ?>
-    <table class="table">
+    <table class="table" id="tbalunos">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -17,6 +18,8 @@
             <th>Ações</th>
 
         </tr>
+    </thead>
+    <tfoot>
         <?php foreach ($alunos as $aluno) : ?>
             <tr>
                 <td><?php echo $aluno['id_aluno'] ?></td>
@@ -64,6 +67,7 @@
                 </td>
             </tr>
         <?php endforeach; ?>
+    </tfoot>
     </table>
     <?php echo $pager->links(); ?>
 </div>

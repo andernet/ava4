@@ -21,7 +21,14 @@
 
             return true;
         }
+
+        $(document).ready(function() {
+            $('#tbalunos').DataTable( {
+                "ajax": "data/arrays.txt"
+            } );
+        } );
     </script>
+
   </head>
   <body>
     <?php
