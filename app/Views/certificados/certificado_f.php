@@ -63,12 +63,12 @@
                     <td align = "center"><h6>CERTIFICADO</h6></td>
                 </tr>
                 <tr>
-                    <td align = "center">Certifico que <?= $dados->tratamento_descricao ?></td>
+                    <td align = "center">Certifico que <?= $dados->tratamento ?></td>
                 </tr>
             </table>
             <table width = "900" border = "0" >
                 <tr>
-                    <td align = "center"><h2><b><?= $dados->posto_descricao ?> <?= $dados->especialidade_descricao ?> <?= $dados->nome_aluno ?></b></h2></td>
+                    <td align = "center"><h2><b><?= $dados->posto_descricao ?> <?= $dados->especialidade ?> <?= $dados->nome_aluno ?></b></h2></td>
                 </tr>
                 <tr>
                     <td align = "center">concluiu, com aproveitamento, o <?= '<b>'.$dados->curso_sigla.'</b>'?>, 

@@ -50,50 +50,36 @@ class CertificadoController extends BaseController
 
 
 	 public function geraCertificado($cod_aluno = null){
-	 	$db      = \Config\Database::connect();
-	 // 	$builder = $db->table('s_alunos a');
-		// $query = $builder->where('cod_aluno', $cod_aluno );
-		// $builder->select('a.cpf, a.id_curso');
+	 	
+	 	$db = \Config\Database::connect();
+	 	//$encrypter = \Config\Services::encrypter();
 
-
-		$query = $db->query('SELECT cpf FROM s_aluno LIMIT 1');
+	 	$query = $db->query('select * from s_aluno where cod_aluno = ' .$cod_aluno);
 		$row   = $query->getRowArray();
-		//echo $row['cpf'];
+		
 
 		//dd($row);
+		
+		
+		$cod_verificacao = uniqid();
 
-		//$data['dados'] = $builder->getRowArray()();
-		//$data['dados'] = $builder->get()->getRow();
-		//$data = $data['cpf'] . $data['id_curso'];
-		//echo $data['cpf'];
-		//dd($data);
+		//$cod_verificacao = $row['cpf'] . $row['id_curso'];
 
-		//$data = '234234234234';
-		$builder = $db->table('s_certificado_emitido');
-        
-        $cod_hash = [
-        	'cod_verificacao' = ($cod_aluno . $row['cpf']),
-		];
 		
 
-        $builder->insert($cod_hash);
-        //$cod_hash = Hash($cod_aluno . $row['cpf']);
-        //dd($cod_hash);
-
-		//$builder->set('cod_verificacao ', $cod_hash);
-		//$result = $builder->insert();
-		//dd($result);
-		$cod_db =$builder->where('cod_verificacao', $cod_hash);
-		dd($cod_db);
+		$query = $db->query("select cod_verificacao from s_certificado_emitido where cod_verificacao = '".$cod_verificacao."'");
 		
-		if ($this->builder->insert() == true) {
-			$builder->insert();
-			echo "Records Saved Successfully";
+		//print_r($query);
+		$cod  = $query->getRowArray();
+		//dd($cod);
+
+		if ( isset($cod['cod_verificacao'])) {
+			return redirect()->to('AlunosController/lista_alunos');
 		} else {
-			echo "Insert error !";
+			//$sql = "insert into s_certificado_emitido (id_aluno, cod_verificacao) VALUES(" . $row['id_aluno'].",'". $cod_verificacao ."'";
+			$sql = "insert into s_certificado_emitido (id_aluno, cod_verificacao) VALUES(" . $row['id_aluno'].", '". $cod_verificacao ."')";
+			$db->query($sql);
 		}
-		
-		// Produces: INSERT INTO mytable (`name`) VALUES ('{$name}')
 	 }
 
 	 public function select_certificado($cod_aluno = null)
@@ -101,16 +87,21 @@ class CertificadoController extends BaseController
 	 	$db      = \Config\Database::connect();
 		$builder = $db->table('s_aluno a');
 		$builder->where('cod_aluno ', $cod_aluno );
-		
-
-
-		$builder->select('a.nome_aluno, c.curso_sigla, c.curso_periodo, t.tratamento_descricao, p.posto_descricao, e. especialidade_descricao, c-e.cod_verificacao ');
+	
+		$builder->select('
+			a.nome_aluno, 
+			c.curso_sigla, 
+			c.curso_periodo, 
+			t.tratamento, 
+			p.posto_descricao, 
+			e.especialidade, 
+			c-e.cod_verificacao');
 		
 		$builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
 		$builder->join('p_om o', 'o.id_om = a.id_om');
 		$builder->join('p_posto p', 'p.id_posto = a.id_posto');
 		$builder->join('p_tratamento t', 't.id_tratamento = a.id_tratamento');
-		$builder->join('s_curso c', 'c.id_curso = a.id_curso');
+		$builder->join('p_curso c', 'c.id_curso = a.id_curso');
 		$builder->join('s_certificado_emitido c-e', 'c-e.id_aluno = a.id_aluno');
 
 		//$query = $builder->get();

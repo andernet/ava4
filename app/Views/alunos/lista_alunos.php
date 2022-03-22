@@ -43,7 +43,7 @@
 
                     <?php //echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank', 'onclick' => 'return gerar()']) 
                     echo '-' ?>
-                    <?php echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank']) ?>
+                    <?php echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info']) ?>
                     -
 
                     <?php echo anchor('CertificadoController/select_certificado/' . $aluno['cod_aluno'], 'Certificado', ['class' => 'btn btn-warning', 'target'=>'_blank']) ?>
