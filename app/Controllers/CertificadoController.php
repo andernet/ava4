@@ -70,12 +70,29 @@ class CertificadoController extends BaseController
 
 		//$data = '234234234234';
 		$builder = $db->table('s_certificado_emitido');
-        //$cod_hash = ($cod_aluno . $row['cpf']);
-        $cod_hash = Hash($cod_aluno . $row['cpf']);
+        
+        $cod_hash = [
+        	'cod_verificacao' = ($cod_aluno . $row['cpf']),
+		];
+		
+
+        $builder->insert($cod_hash);
+        //$cod_hash = Hash($cod_aluno . $row['cpf']);
         //dd($cod_hash);
 
-		$builder->set('cod_verificacao ', $cod_hash);
-		$builder->insert();
+		//$builder->set('cod_verificacao ', $cod_hash);
+		//$result = $builder->insert();
+		//dd($result);
+		$cod_db =$builder->where('cod_verificacao', $cod_hash);
+		dd($cod_db);
+		
+		if ($this->builder->insert() == true) {
+			$builder->insert();
+			echo "Records Saved Successfully";
+		} else {
+			echo "Insert error !";
+		}
+		
 		// Produces: INSERT INTO mytable (`name`) VALUES ('{$name}')
 	 }
 

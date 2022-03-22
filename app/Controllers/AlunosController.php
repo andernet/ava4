@@ -24,49 +24,49 @@ class AlunosController extends ResourceController
 
     public function lista_alunos()
     {
-        $alunos = new AlunosModel();
+        echo view('templates/header');
+        
+        // $alunos = new AlunosModel();
+        // $listaAlunos = $alunos->findAll();
+
+        // foreach ($listaAlunos as $lista) {
+        //     $result[] = [
+        //         $lista['id_aluno'],
+        //         $lista['nome_aluno'],
+        //         $lista['cpf'],
+        //         $lista['id_curso'],
+        //         $lista['id_tratamento'],
+        //         $lista['id_posto'],
+        //         $lista['id_quadro'],
+        //         $lista['id_especialidade'],
+        //         $lista['id_om'],
+        //         $lista['id_situacao'],
+        //         $lista['saram'],
+        //         $lista['cod_aluno'],            
+        //     ];
+        // }
+        // $listaAlunos = [
+        //     'data' => $result
+        // ];
+
+
+        // echo "<pre>";
+        // print_r(json_encode($data));
+        // echo '</pre>';
+
 
         
+        // echo view('alunos/lista_alunos', $listaAlunos);
+     
 
-        $listaAlunos = $alunos->findAll();
-
-        foreach ($listaAlunos as $lista) {
-            $data[] = [
-                $lista['id_aluno'],
-                $lista['nome_aluno'],
-                $lista['cpf'],
-                $lista['id_curso'],
-                $lista['id_tratamento'],
-                $lista['id_posto'],
-                $lista['id_quadro'],
-                $lista['id_especialidade'],
-                $lista['id_om'],
-                $lista['id_situacao'],
-                $lista['saram'],
-                $lista['cod_aluno'],            
-            ];
-        }
-
-
-        echo "<pre>";
-        print_r(json_encode($data));
-        echo '</pre>';
-
-
-        // echo view('templates/header');
-        // echo view('templates/nav');
-        // return view('alunos/lista_alunos'
-
-  //       $db      = \Config\Database::connect();
-  //       $builder = $db->table('s_aluno a');
-  //       $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('s_aluno a');
+        $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
 		
-
-
-  //       return view('alunos/lista_alunos', [
-		// 	'alunos' => $this->alunosModel->paginate(10),
-		// 	'pager' => $this->alunosModel->pager
-		// ]);
+        return view('alunos/lista_alunos', [
+			'alunos' => $this->alunosModel->paginate(10),
+			'pager' => $this->alunosModel->pager
+		]);
     }
     
 
