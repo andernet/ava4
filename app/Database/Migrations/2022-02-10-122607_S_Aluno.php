@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Database\Migrations;
-
 use CodeIgniter\Database\Migration;
 
 class S_Aluno extends Migration
@@ -63,9 +62,10 @@ class S_Aluno extends Migration
                 'constraint' => '10',
             ],
             'cod_aluno'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '15',
-                'unique'            => true,
+                'type'       => 'INT',
+                'constraint' => 15,
+                'unsigned'       => true,
+                'unique'     => true,
             ],
             'password'       => [
                 'type'       => 'VARCHAR',

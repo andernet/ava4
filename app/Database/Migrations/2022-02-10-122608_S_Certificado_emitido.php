@@ -16,10 +16,11 @@ class S_Certificado_emitido extends Migration
                 'auto_increment' => true,
             ],
 
-            'id_aluno'          => [
+            'cod_aluno'          => [
                 'type'           => 'INT',
-                'constraint'     => 5,
+                'constraint'     => 15,
                 'unsigned'       => true,
+                'unique'     => true,
             ],
             'cod_verificacao'          => [
                 'type'       => 'VARCHAR',
@@ -34,7 +35,7 @@ class S_Certificado_emitido extends Migration
 
         $this->forge->addKey('id_certificado_emitido', true);
         
-        //$this->forge->addForeignKey('id_aluno', 's_aluno', 'id_aluno', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('cod_aluno', 's_aluno', 'cod_aluno', 'CASCADE', 'CASCADE');
 
         $this->forge->createTable('s_certificado_emitido', false);
         

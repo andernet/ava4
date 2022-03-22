@@ -54,8 +54,8 @@ class CertificadoController extends BaseController
 	 	$db = \Config\Database::connect();
 	 	//$encrypter = \Config\Services::encrypter();
 
-	 	$query = $db->query('select * from s_aluno where cod_aluno = ' .$cod_aluno);
-		$row   = $query->getRowArray();
+	 	//$query = $db->query('select * from s_aluno where cod_aluno = ' .$cod_aluno);
+		//$row   = $query->getRowArray();
 		
 
 		//dd($row);
@@ -67,17 +67,21 @@ class CertificadoController extends BaseController
 
 		
 
-		$query = $db->query("select cod_verificacao from s_certificado_emitido where cod_verificacao = '".$cod_verificacao."'");
+		//$query = $db->query("select cod_verificacao from s_certificado_emitido where cod_verificacao = '".$cod_verificacao."'");
+		$query = $db->query("select cod_aluno from s_certificado_emitido where cod_aluno = '".$cod_aluno."'");
 		
 		//print_r($query);
 		$cod  = $query->getRowArray();
 		//dd($cod);
 
-		if ( isset($cod['cod_verificacao'])) {
+		if ( isset($cod['cod_aluno'])) {
+			$data =[
+				'erro' => 'ja',
+			];
 			return redirect()->to('AlunosController/lista_alunos');
 		} else {
 			//$sql = "insert into s_certificado_emitido (id_aluno, cod_verificacao) VALUES(" . $row['id_aluno'].",'". $cod_verificacao ."'";
-			$sql = "insert into s_certificado_emitido (id_aluno, cod_verificacao) VALUES(" . $row['id_aluno'].", '". $cod_verificacao ."')";
+			$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES(" . $cod_aluno.", '". $cod_verificacao ."')";
 			$db->query($sql);
 		}
 	 }

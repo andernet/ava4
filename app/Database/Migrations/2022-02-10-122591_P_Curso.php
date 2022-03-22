@@ -41,16 +41,16 @@ class P_Curso extends Migration
 
         $this->forge->addKey('id_curso', true);
 
-        $this->forge->addForeignKey('id_curso_status', 'p_curso_status', 'id_curso_status');
+        $this->forge->addForeignKey('id_curso_status', 'p_curso_status', 'id_curso_status', 'CASCADE', 'CASCADE');
         
-        //$this->forge->addForeignKey('id_curso_tipo', 'p_curso_tipo', 'id_curso_tipo');
+        $this->forge->addForeignKey('id_curso_tipo', 'p_curso_tipo', 'id_curso_tipo', 'CASCADE', 'CASCADE');
 
 
         $this->forge->createTable('p_curso', false);
 
         
 
-        $this->db->query("INSERT INTO p_curso (curso_sigla, curso_descricao, id_curso_status) VALUES ('CBI', 'Curso Básico de Inteligência', '1'), ('CTIC', 'Curso para Tratamento de Informações Classificadas', '1'), ('CAI', 'Curso de Análise de Inteligência', '1'), ('CBI-OF', 'Curso Básico de Inteligência para Oficiais', '1'), ('CBI-GD', 'Curso Básico de Inteligência para Graduados', '1'), ('CAVI-OF', 'Curso Avançado de Inteligência para Oficiais', '1'), ('CAVI-GD', 'Curso Avançado de Inteligência para Graduados', '1'), ('CBOI', 'Curso Básico de Operações', '1')");
+        $this->db->query("INSERT INTO p_curso (curso_sigla, curso_descricao, id_curso_status, id_curso_tipo) VALUES ('CBI', 'Curso Básico de Inteligência', '1', '1'), ('CTIC', 'Curso para Tratamento de Informações Classificadas', '1', '1'), ('CAI', 'Curso de Análise de Inteligência', '1', '1'), ('CBI-OF', 'Curso Básico de Inteligência para Oficiais', '1', '1'), ('CBI-GD', 'Curso Básico de Inteligência para Graduados', '1', '1'), ('CAVI-OF', 'Curso Avançado de Inteligência para Oficiais', '1', '1'), ('CAVI-GD', 'Curso Avançado de Inteligência para Graduados', '1', '1'), ('CBOI', 'Curso Básico de Operações', '1', '1')");
     }
 
     public function down()
