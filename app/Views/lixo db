@@ -1,3 +1,10 @@
+verificar sql
+
+ $sql = $builder->getCompiledSelect();
+
+
+ 
+
 $data = [
             'status' => 1,
             'status_descricao' => 'INATIVO',
@@ -10,3 +17,5 @@ $data = [
 
           //$this->db->query("INSERT INTO p_status (status, status_descricao) VALUES (:status:, :status_descricao:)", $data);
         //$this->db->query("INSERT INTO p_status (status, status_descricao) VALUES (:status:, :status_descricao:)", $data1);
+
+

@@ -26,47 +26,25 @@ class AlunosController extends ResourceController
     {
         echo view('templates/header');
         
-        // $alunos = new AlunosModel();
-        // $listaAlunos = $alunos->findAll();
-
-        // foreach ($listaAlunos as $lista) {
-        //     $result[] = [
-        //         $lista['id_aluno'],
-        //         $lista['nome_aluno'],
-        //         $lista['cpf'],
-        //         $lista['id_curso'],
-        //         $lista['id_tratamento'],
-        //         $lista['id_posto'],
-        //         $lista['id_quadro'],
-        //         $lista['id_especialidade'],
-        //         $lista['id_om'],
-        //         $lista['id_situacao'],
-        //         $lista['saram'],
-        //         $lista['cod_aluno'],            
-        //     ];
-        // }
-        // $listaAlunos = [
-        //     'data' => $result
-        // ];
-
-
-        // echo "<pre>";
-        // print_r(json_encode($data));
-        // echo '</pre>';
-
-
-        
-        // echo view('alunos/lista_alunos', $listaAlunos);
-     
-
         $db      = \Config\Database::connect();
-        $builder = $db->table('s_aluno a');
-        $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
-		
-        return view('alunos/lista_alunos', [
-			'alunos' => $this->alunosModel->paginate(10),
-			'pager' => $this->alunosModel->pager
-		]);
+        $builder = $db->table('s_aluno as a');
+        $builder->select('*');
+        
+        $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade', 'left');
+        $builder->join('p_om o', 'o.id_om = a.id_om', 'left');
+        $builder->join('p_posto p', 'p.id_posto = a.id_posto', 'left');
+        $builder->join('p_quadro q', 'q.id_quadro = a.id_quadro', 'left');
+        $builder->join('p_tratamento t', 't.id_tratamento = a.id_tratamento', 'left');
+        $builder->join('p_curso c', 'c.id_curso = a.id_curso', 'left');
+        $builder->join('s_certificado_emitido c-e', 'c-e.cod_aluno = a.cod_aluno', 'left');
+        
+        $query['alunos'] = $builder->get()->getResultArray();
+        
+        return view('alunos/lista_alunos', $query);	
+        //return view('alunos/lista_alunos', [
+		// 	'alunos' => $this->alunosModel->paginate(10),
+		// 	'pager' => $this->alunosModel->pager
+		// ]);
     }
     
 
