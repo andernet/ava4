@@ -4,7 +4,7 @@
 
 // print_r(get_defined_vars());
 // echo '</pre>';
-// dd();
+//dd();
     // [id_aluno] => 1
     // [nome_aluno] => 1
     // [cpf] => 15478968745
@@ -44,10 +44,6 @@
             <th>Name</th>
             <th>CPF</th>
             <th>Curso</th>
-            <th>Tratamento</th>
-            <th>Posto</th>
-            <th>Quadro</th>
-            <th>Especialidade</th>
             <th>OM</th>
             <th>Situação</th>
             <th>saram</th>
@@ -64,12 +60,8 @@
                 <td><?php echo $aluno['tratamento'].' '.$aluno['quadro'].' '.$aluno['posto_sigla'].' '.$aluno['especialidade'].' '.$aluno['nome_aluno'] ?></td>
                 <td><?php echo $aluno['cpf'] ?></td>
                 <td><?php echo $aluno['curso_sigla'] ?></td>
-                <td><?php echo  'v'?></td>
-                <td><?php echo  ''?></td>
-                <td><?php echo  ''?></td>
-                <td><?php echo  ''?></td>
                 <td><?php echo $aluno['om_sigla'] ?></td>
-                <td><?php echo $aluno['id_situacao'] ?></td>
+                <td><?php echo $aluno['situacao'] ?></td>
                 <td><?php echo $aluno['saram'] ?></td>
                 <td><?php echo $aluno['cod_aluno'] ?></td>
                 <td><?php echo $aluno['cod_verificacao'] ?></td>
@@ -85,24 +77,7 @@
                     <?php echo anchor('CertificadoController/geraCertificado/' . $aluno['cod_aluno'], 'Gerar', ['class' => 'btn btn-info']) ?>
                     -
 
-                    <?php echo anchor('CertificadoController/select_certificado/' . $aluno['cod_aluno'], 'Certificado', ['class' => 'btn btn-warning', 'target'=>'_blank']) ?>
-                    
-
-
-
-        
-
-
-
-
-
-                    
-
-                    
-
-
-                   
-
+                    <?php echo anchor('CertificadoController/select_certificado/' . $aluno['id_aluno'], 'Certificado', ['class' => 'btn btn-warning', 'target'=>'_blank']) ?>
                 </td>
             </tr>
         <?php endforeach; ?>

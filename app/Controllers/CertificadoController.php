@@ -51,6 +51,7 @@ class CertificadoController extends BaseController
 
 	 public function geraCertificado($cod_aluno = null){
 	 	
+	 	//dd($cod_aluno);
 	 	$db = \Config\Database::connect();
 	 	$builder = $db->table('s_certificado_emitido');
 	 	$builder->select('cod_aluno');
@@ -70,54 +71,94 @@ class CertificadoController extends BaseController
 			return redirect()->to('AlunosController/lista_alunos');
 		} else {
 			$cod_verificacao = uniqid();
-			//$sql = "insert into s_certificado_emitido (id_aluno, cod_verificacao) VALUES(" . $row['id_aluno'].",'". $cod_verificacao ."'";
-			$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES(" . $cod_aluno.", '". $cod_verificacao ."')";
+			//$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES('" . $data['dados']."','". $cod_verificacao ."'";
+			$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES('".$cod_aluno."', '". $cod_verificacao ."')";
+			
 			$db->query($sql);
 		}
 	 }
 
-	 public function select_certificado($cod_aluno = null)
+	 public function select_certificado($id_aluno = null)
 	 {
+
+	 	//primeiro verifica se foi gerado certificado
+
+	 	//dd($cod_aluno);
+	 	
+
 	 	$db      = \Config\Database::connect();
-		$builder = $db->table('s_aluno a');
-		$builder->where('cod_aluno ', $cod_aluno );
-	
-		$builder->select('
-			a.nome_aluno, 
-			c.curso_sigla, 
-			c.curso_periodo, 
-			t.tratamento, 
-			p.posto_descricao, 
-			e.especialidade, 
-			c-e.cod_verificacao');
-		
-		$builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade');
-		$builder->join('p_om o', 'o.id_om = a.id_om');
-		$builder->join('p_posto p', 'p.id_posto = a.id_posto');
-		$builder->join('p_tratamento t', 't.id_tratamento = a.id_tratamento');
-		$builder->join('p_curso c', 'c.id_curso = a.id_curso');
-		$builder->join('s_certificado_emitido c-e', 'c-e.id_aluno = a.id_aluno');
+        $builder = $db->table('s_aluno as a');
+        $builder->where('id_aluno ', $id_aluno );
 
-		$query = $builder->get();
+        $builder->select('
+            a.nome_aluno, 
+            a.id_aluno, 
+            a.cpf, 
+            a.saram,
+            a.cod_aluno,
+            c.curso_sigla, 
+            o.om_sigla, 
+            c.curso_periodo, 
+            t.tratamento, 
+            q.quadro, 
+            p.posto_sigla, 
+            e.especialidade, 
+            c-e.cod_verificacao,
+            s.situacao');
+        
+        $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade', 'left');
+        $builder->join('p_om o', 'o.id_om = a.id_om', 'left');
+        $builder->join('p_posto p', 'p.id_posto = a.id_posto', 'left');
+        $builder->join('p_quadro q', 'q.id_quadro = a.id_quadro', 'left');
+        $builder->join('p_tratamento t', 't.id_tratamento = a.id_tratamento', 'left');
+        $builder->join('p_curso c', 'c.id_curso = a.id_curso', 'left');
+        $builder->join('s_certificado_emitido c-e', 'c-e.cod_aluno = a.cod_aluno', 'left');
+        $builder->join('p_situacao s', 's.id_situacao = a.id_situacao', 'left');
 
+		//dd($builder->getCompiledSelect());
+		//$query = $builder->get();
+
+		//retornar array
+		$data['dados'] = $builder->get()->getResultArray();
+		//$data['dados'] = $builder->get()->getResult();
+
+        //retorna objeto
 		//$data['dados'] = $builder->get()->getRow();
 
 		//dd($data);
+		
+		print $data['cod_aluno'];
 
 		// echo '<pre>';
 		// print_r($query->getResultArray());
 		// echo '</pre>';
+		$this->geraPDF($data);
 
 		
 
 		//return view('certificados/certificado_f', $data);
 
+		// if (isset($data['cod_aluno'])) {
+		// 	$db = \Config\Database::connect();
+		//  	$builder = $db->table('s_certificado_emitido');
+		//  	$builder->select('cod_aluno');
+		//  	//$builder->where('cod_aluno ', $cod_aluno );
+		//  	$builder->where('id_aluno ', $id_aluno );
+		//  	$data['dados'] = $builder->get()->getRow();
+
+		//  	
+
+		// } else {
+			
+		// 	return redirect()->to('AlunosController/lista_alunos');
+		// }
+		
+		
 
 
 
 
-
-		$this->geraPDF($data);
+		
 
 		
 

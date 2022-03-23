@@ -1,9 +1,12 @@
-verificar sql
+//verificar sql
+$sql = $builder->getCompiledSelect();
 
- $sql = $builder->getCompiledSelect();
 
+//retornar array
+//$data['dados'] = $builder->get()->getResultArray();
 
- 
+        //retorna objeto
+    $data['dados'] = $builder->get()->getRow();
 
 $data = [
             'status' => 1,

@@ -28,7 +28,22 @@ class AlunosController extends ResourceController
         
         $db      = \Config\Database::connect();
         $builder = $db->table('s_aluno as a');
-        $builder->select('*');
+
+        $builder->select('
+            a.nome_aluno, 
+            a.id_aluno, 
+            a.cpf, 
+            a.saram,
+            a.cod_aluno,
+            c.curso_sigla, 
+            o.om_sigla, 
+            c.curso_periodo, 
+            t.tratamento, 
+            q.quadro, 
+            p.posto_sigla, 
+            e.especialidade, 
+            c-e.cod_verificacao,
+            s.situacao');
         
         $builder->join('p_especialidade e', 'e.id_especialidade = a.id_especialidade', 'left');
         $builder->join('p_om o', 'o.id_om = a.id_om', 'left');
@@ -37,6 +52,9 @@ class AlunosController extends ResourceController
         $builder->join('p_tratamento t', 't.id_tratamento = a.id_tratamento', 'left');
         $builder->join('p_curso c', 'c.id_curso = a.id_curso', 'left');
         $builder->join('s_certificado_emitido c-e', 'c-e.cod_aluno = a.cod_aluno', 'left');
+        $builder->join('p_situacao s', 's.id_situacao = a.id_situacao', 'left');
+
+        //dd($builder->getCompiledSelect());
         
         $query['alunos'] = $builder->get()->getResultArray();
         
@@ -45,6 +63,8 @@ class AlunosController extends ResourceController
 		// 	'alunos' => $this->alunosModel->paginate(10),
 		// 	'pager' => $this->alunosModel->pager
 		// ]);
+
+        //SELECT s_aluno.nome_aluno as "Nome", p_situacao.situacao as "Eh burro?" FROM p_situacao, s_aluno WHERE s_aluno.id_situacao = p_situacao.id_situacao
     }
     
 

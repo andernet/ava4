@@ -16,29 +16,23 @@ class P_Situacao extends Migration
                 'auto_increment' => true,
             ],
             'situacao'       => [
-                'type'       => 'INT',
-                'constraint' => 2,
-            ],
-            'situacao_descricao'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '11',
             ]
             ]);
 
         $data = [
-            'situacao' => 1,
-            'situacao_descricao' => 'REPROVADO',
+            'situacao' => 'REPROVADO',
         ];
 
         $data1 = [
-            'situacao' => 2,
-            'situacao_descricao' => 'APROVADO',
+            'situacao' => 'APROVADO',
         ];
         $this->forge->addKey('id_situacao', true);
         $this->forge->createTable('p_situacao', false);
 
-        $this->db->query("INSERT INTO p_situacao (situacao, situacao_descricao) VALUES (:situacao:, :situacao_descricao:)", $data);
-        $this->db->query("INSERT INTO p_situacao (situacao, situacao_descricao) VALUES (:situacao:, :situacao_descricao:)", $data1);
+        $this->db->query("INSERT INTO p_situacao (situacao) VALUES (:situacao:)", $data);
+        $this->db->query("INSERT INTO p_situacao (situacao) VALUES (:situacao:)", $data1);
     }
 
     public function down()

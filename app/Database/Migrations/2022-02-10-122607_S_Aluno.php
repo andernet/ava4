@@ -52,10 +52,10 @@ class S_Aluno extends Migration
                 'constraint' => 5,
                 'unsigned'       => true,
             ],
-            'id_situacao'       => [
+            'id_situacao'    => [
                 'type'       => 'INT',
                 'constraint' => 5,
-                'unsigned'       => true,
+                'unsigned'   => true,
             ],
             'saram'       => [
                 'type'       => 'VARCHAR',
