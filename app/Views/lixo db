@@ -1,6 +1,14 @@
 //verificar sql
 $sql = $builder->getCompiledSelect();
 
+//retornar array
+        //$data['dados'] = $builder->get()->getResultArray();
+        //$data['dados'] = $builder->get()->getResult();
+
+        //retorna objeto para acessar echo $data['dados']->id_curso;
+        $data['dados'] = $builder->get()->getRow();
+        //$data['dados'] = $builder->get()->getRow();
+
 
 //retornar array
 //$data['dados'] = $builder->get()->getResultArray();

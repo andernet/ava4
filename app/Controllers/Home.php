@@ -47,15 +47,15 @@ class Home extends BaseController
 
     }
 
-    public function lista_alunos()
+    public function lista_aluno()
     {
         $data =[
              'title'=>'Dashboard',
         //     'userInfo'=>$userInfo
          ];
-        //return view ('alunos/alunos.php');
+        //return view ('aluno/aluno.php');
         echo view('templates/header', $data);
-        echo view('/alunos/alunos');
+        echo view('/aluno/aluno');
         echo view('templates/footer');
     }
     

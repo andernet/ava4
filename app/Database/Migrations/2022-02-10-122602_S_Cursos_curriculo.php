@@ -23,9 +23,16 @@ class P_Cursos_curriculo extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ],
+            'id_curso'       => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'       => true,
+            ],
         ]);
 
         $this->forge->addKey('id_curso_curriculo', true);
+
+        $this->forge->addForeignKey('id_curso', 'p_curso', 'id_curso');
         $this->forge->createTable('p_cursos_curriculo', false);
     }
 

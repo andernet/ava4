@@ -102,5 +102,5 @@ class S_Aluno extends Migration
     }
 }
 
-// ERROR - 2022-02-10 07:33:25 --> Unknown table 'ava.alunos'
+// ERROR - 2022-02-10 07:33:25 --> Unknown table 'ava.aluno'
 // ERROR - 2022-02-10 07:33:25 --> Incorrect table definition; there can be only one auto column and it must be defined as a key

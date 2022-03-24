@@ -1,4 +1,13 @@
+<?php
+// echo '<pre>';
+// // mostra todos os indíces possíveis para a matriz de variáveis
 
+// print_r(get_defined_vars());
+// echo '</pre>';
+
+
+// dd();
+?>
     <!DOCTYPE html>
      <html> 
      <head>
@@ -34,13 +43,13 @@
         <th width = "900" align = "center">CARGA HOR&Aacute;RIA</th>
         </tr>';
 
-// while ($consulta1 = mysqli_fetch_array($result1)) {
-//         $html .= '<tr>';
-//         $html .= '<td width = "900">' .$consulta1['disciplina']. '</td>';
-//         $html .= '<td width = "900" align = "center">' . $consulta1['carga_horaria'] . '</td>';
-//         $html .= '</tr>';
-//     }
-    $html .= '</table>
+         <?php foreach ($dados as $dado) : ?>
+            <tr>
+                <td><?php echo $dado['cursos_curriculo'] ?></td>
+                <td><?php echo $dado['cursos_curriculo_carga'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+</table>
         </div>
         </body>
         </html>';

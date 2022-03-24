@@ -57,7 +57,7 @@ $routes->group('',['filter'=>'AuthCheck'], function($routes){
     $routes->get('/', 'Auth::index');
     $routes->get('/auth/register', 'Auth::register');
 
-    $routes->get('/home/lista_alunos', 'Home::lista_alunos');
+    $routes->get('/home/lista_aluno', 'Home::lista_aluno');
     $routes->get('/home/profile', 'Home::profile');
 
 

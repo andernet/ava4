@@ -29,7 +29,7 @@
 include("mpdf/mpdf.php");
 include "conn.php";
 //include_once "menu.html";
-$sql = "SELECT * FROM lista_alunos";
+$sql = "SELECT * FROM lista_aluno";
 $result = mysql_query($sql, $conexao);
 
 //print_r($result);
@@ -242,10 +242,10 @@ $routes->add('lista_usuarios', 'User::lista_usuarios');
 $routes->get('register', 'User::register');
 $routes->add('login', 'User::login');
 
-//alunos
-$routes->add('lista_alunos', 'Alunos::lista_alunos');
-//$routes->match(['get','post'],'register_aluno', 'Alunos::register_aluno', ['filter' => 'noauth']);
-$routes->get('register_aluno', 'Alunos::register_aluno');
+//aluno
+$routes->add('lista_aluno', 'aluno::lista_aluno');
+//$routes->match(['get','post'],'register_aluno', 'aluno::register_aluno', ['filter' => 'noauth']);
+$routes->get('register_aluno', 'aluno::register_aluno');
 
 //$routes->get('/', 'Users::index', ['filter' => 'noauth']);
 $routes->get('logout', 'Users::logout');

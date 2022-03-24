@@ -7,7 +7,7 @@
       <a href="<?= site_url('auth/logout'); ?>">Logout</a>
     </div>
     <div class="row">
-      <a href="<?= site_url('home/lista_alunos'); ?>">lista de alunos</a>
+      <a href="<?= site_url('home/lista_aluno'); ?>">lista de aluno</a>
 
     </div>
   </div>

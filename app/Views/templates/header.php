@@ -45,12 +45,12 @@
 
 <ul class="navbar-nav my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/home/lista_alunos">Lista de usuarios</a>
+            <a class="nav-link" href="/home/lista_aluno">Lista de usuarios</a>
           </li>
         </ul>
 <a href="<?= site_url('auth/logout'); ?>">Logout</a>
 <a class="nav-link" href="/CertificadoController/lista">Certificados</a>
-<a class="nav-link" href="/AlunosController/lista_alunos">Lista de Alunos</a>
+<a class="nav-link" href="/AlunoController/lista_aluno">Lista de Alunos</a>
 <a class="nav-link" href="/UserController/cad_user">Cad User</a>
 
 

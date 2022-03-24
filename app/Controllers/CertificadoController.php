@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\AlunosModel;
+use App\Models\AlunoModel;
 use App\Models\UserModel;
 use App\Libraries\Hash;
 
@@ -9,7 +9,7 @@ class CertificadoController extends BaseController
 {
 	public function __construct()
 	{
-		$this->userModel = new AlunosModel();
+		$this->userModel = new AlunoModel();
 
 	}
     public function index()
@@ -26,7 +26,8 @@ class CertificadoController extends BaseController
         return view('templates/footer');
     }
 
-     public function geraPDF($query = null)
+     public function geraPDF($data = null, $data2 = null)
+     // public function geraPDF($query = null)
 	 {
 
 	 	$nome_arquivo = 'teste23';
@@ -34,11 +35,11 @@ class CertificadoController extends BaseController
 
 		$mpdf->AddPage('L', '', '', '', '', 29, 25, 55, 30, 18, 12);
 		// $html = view('certificados/certificado_f',[]);
-		$html = view('certificados/certificado_f', $query);
+		$html = view('certificados/certificado_f', $data);
 		$mpdf->WriteHTML($html);
 		$html = ob_get_clean();
 		$mpdf->AddPage('L', '', '', '', '', 29, 25, 55, 30, 18, 12);
-		$html = view('certificados/certificado_v',[]);
+		$html = view('certificados/certificado_v',$data2);
 		$mpdf->WriteHTML($html);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 		//$mpdf->Output('arjun.pdf','I'); // opens in browser
@@ -50,42 +51,28 @@ class CertificadoController extends BaseController
 
 
 	 public function geraCertificado($cod_aluno = null){
-	 	
-	 	//dd($cod_aluno);
 	 	$db = \Config\Database::connect();
 	 	$builder = $db->table('s_certificado_emitido');
 	 	$builder->select('cod_aluno');
 	 	$builder->where('cod_aluno ', $cod_aluno );
 	 	$data['dados'] = $builder->get()->getRow();
-	 	
-		//$query = $db->query("select cod_aluno from s_certificado_emitido where cod_aluno = '".$cod_aluno."'");
-		
-		//print_r($query);
-		//$cod  = $query->getRowArray();
-		//dd($data);
-
 		if ( isset($data['dados'])) {
 			$data =[
 				'erro' => 'ja',
 			];
-			return redirect()->to('AlunosController/lista_alunos');
+			return redirect()->to('AlunoController/lista_aluno');
 		} else {
 			$cod_verificacao = uniqid();
 			//$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES('" . $data['dados']."','". $cod_verificacao ."'";
 			$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES('".$cod_aluno."', '". $cod_verificacao ."')";
 			
 			$db->query($sql);
+			return redirect()->to('AlunoController/lista_aluno');
 		}
 	 }
 
 	 public function select_certificado($id_aluno = null)
-	 {
-
-	 	//primeiro verifica se foi gerado certificado
-
-	 	//dd($cod_aluno);
-	 	
-
+	 {	
 	 	$db      = \Config\Database::connect();
         $builder = $db->table('s_aluno as a');
         $builder->where('id_aluno ', $id_aluno );
@@ -97,6 +84,7 @@ class CertificadoController extends BaseController
             a.saram,
             a.cod_aluno,
             c.curso_sigla, 
+            c.id_curso, 
             o.om_sigla, 
             c.curso_periodo, 
             t.tratamento, 
@@ -115,62 +103,14 @@ class CertificadoController extends BaseController
         $builder->join('s_certificado_emitido c-e', 'c-e.cod_aluno = a.cod_aluno', 'left');
         $builder->join('p_situacao s', 's.id_situacao = a.id_situacao', 'left');
 
-		//dd($builder->getCompiledSelect());
-		//$query = $builder->get();
-
-		//retornar array
-		$data['dados'] = $builder->get()->getResultArray();
-		//$data['dados'] = $builder->get()->getResult();
-
-        //retorna objeto
-		//$data['dados'] = $builder->get()->getRow();
-
-		//dd($data);
-		
-		print $data['cod_aluno'];
-
-		// echo '<pre>';
-		// print_r($query->getResultArray());
-		// echo '</pre>';
-		$this->geraPDF($data);
-
-		
-
-		//return view('certificados/certificado_f', $data);
-
-		// if (isset($data['cod_aluno'])) {
-		// 	$db = \Config\Database::connect();
-		//  	$builder = $db->table('s_certificado_emitido');
-		//  	$builder->select('cod_aluno');
-		//  	//$builder->where('cod_aluno ', $cod_aluno );
-		//  	$builder->where('id_aluno ', $id_aluno );
-		//  	$data['dados'] = $builder->get()->getRow();
-
-		//  	
-
-		// } else {
-			
-		// 	return redirect()->to('AlunosController/lista_alunos');
-		// }
-		
-		
-
-
-
-
-		
-
-		
-
-			//$query['dados'] = $builder->get()->getResult();
-		//$query = $builder->get();
-
-		//$data['query']= $this->AlunosModel->get_user();
-
-		//$data['dados'] = $builder->get()->getRow();
-
-
-	 	
+        //retorna objeto para acessar $dados->nome
+		$data['dados'] = $builder->get()->getRow();
+		$db      = \Config\Database::connect();
+        $builder = $db->table('p_cursos_curriculo as c');
+        $builder->where('id_curso ', $data['dados']->id_curso);
+        //gera um array
+        $data2['dados'] = $builder->get()->getResultArray();
+		$this->geraPDF($data, $data2);	 	
 	 }
 }
 
