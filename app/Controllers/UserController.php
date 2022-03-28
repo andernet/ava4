@@ -34,7 +34,7 @@ class UserController extends BaseController
 		echo view('include_files/footer');
 	}
 
-	public function lista_usuarios()
+	public function list()
 	{
 		echo view('include_files/header');
         echo view('include_files/nav');

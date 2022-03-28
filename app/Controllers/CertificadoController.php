@@ -60,14 +60,14 @@ class CertificadoController extends BaseController
 			$data =[
 				'erro' => 'ja',
 			];
-			return redirect()->to('AlunoController/lista_aluno');
+			return redirect()->to('AlunoController/');
 		} else {
 			$cod_verificacao = uniqid();
 			//$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES('" . $data['dados']."','". $cod_verificacao ."'";
 			$sql = "insert into s_certificado_emitido (cod_aluno, cod_verificacao) VALUES('".$cod_aluno."', '". $cod_verificacao ."')";
 			
 			$db->query($sql);
-			return redirect()->to('AlunoController/lista_aluno');
+			return redirect()->to('/AlunoController/');
 		}
 	 }
 
@@ -113,5 +113,7 @@ class CertificadoController extends BaseController
 		$this->geraPDF($data, $data2);	 	
 	 }
 }
+
+
 
 

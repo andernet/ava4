@@ -1,3 +1,8 @@
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+
+
         // [id_aluno] => 1
 //             [nome_aluno] => xxxxxxxxxxxxxxx
 //             [cpf] => 2

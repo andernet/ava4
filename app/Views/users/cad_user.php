@@ -35,9 +35,9 @@
             <label class="mr-sm-2" for="id_user_tipo">Tipo de usuário</label>
             <select class="custom-select mr-sm-2" id="id_user_tipo" name="id_user_tipo">
               <option selected>Selecione...</option>
-              <option value="1">Aluno</option>
-              <option value="2">Monitor</option>
-              <option value="3">Admin</option>
+              <option value="3">Aluno</option>
+              <option value="2">DPL</option>
+              <option value="1">Admin</option>
             </select>
           </div>
 </br>

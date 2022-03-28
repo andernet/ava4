@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\AlunoModel;
+use App\Helpers\Form_helper;
+
 
 class AlunoController extends ResourceController
 {
@@ -12,17 +14,15 @@ class AlunoController extends ResourceController
      *
      * @return mixed
      */
+
+    private $alunoModel;
+
     public function __construct()
 	{
 		$this->alunoModel = new AlunoModel();
 		helper (['form']);
 	}
     public function index()
-    {
-        //
-    }
-
-    public function lista_aluno()
     {
         echo view('templates/header');
 
@@ -58,11 +58,16 @@ class AlunoController extends ResourceController
         
         $query['aluno'] = $builder->get()->getResultArray();
         
-        return view('aluno/lista_aluno', $query);	
+        return view('aluno/lista_aluno', $query);   
         //return view('aluno/lista_aluno', [
-		// 	'aluno' => $this->alunoModel->paginate(10),
-		// 	'pager' => $this->alunoModel->pager
-		// ]);
+        //  'aluno' => $this->alunoModel->paginate(10),
+        //  'pager' => $this->alunoModel->pager
+        // ]);
+    }
+
+    public function lista_aluno()
+    {
+        ///
 
     }
     
@@ -83,9 +88,63 @@ class AlunoController extends ResourceController
      *
      * @return mixed
      */
-    public function new()
+    
+    public function save()
     {
-        //
+
+        $data = [];
+        helper(['form']);
+
+        if ($this->request->getMethod() == 'post') {
+         //let's do the validation here
+
+            
+         $rules = [
+             'nome_aluno' => 'required|min_length[3]|max_length[20]',
+             //'lastname' => 'required|min_length[3]|max_length[20]',
+             //'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+             //'password' => 'required|min_length[8]|max_length[255]',
+             //'password_confirm' => 'matches[password]',
+               // 'cod_aluno' => 'is_unique[aluno.cod_aluno]',                 
+         ];
+
+         if (! $this->validate($rules)) {
+            //dd('aqui');
+             $data['validation'] = $this->validator;
+         }else{
+             $model = new AlunoModel();
+
+             //$cod_aluno = 
+
+             
+
+             $newData = [
+                 'nome_aluno' => $this->request->getVar('nome_aluno'),
+                 'cpf' => $this->request->getVar('cpf'),
+                 'id_curso' => $this->request->getVar('id_curso'),
+                 'id_tratamento' => $this->request->getVar('id_tratamento'),
+                 'id_posto' => $this->request->getVar('id_posto'),
+                 'id_quadro' => $this->request->getVar('id_quadro'),
+                 'id_especialidade' => $this->request->getVar('id_especialidade'),
+                 'id_om' => $this->request->getVar('id_om'),
+                 'id_situacao' => $this->request->getVar('id_situacao'),
+                 'saram' => $this->request->getVar('saram'),
+                 'cod_aluno' => $this->request->getVar('id_curso').$this->request->getVar('cpf'),
+                 'password' => $this->request->getVar('password'),
+                 //'' => $this->request->getVar(''),
+                 
+             ];
+             echo '<pre>';
+
+             print_r($newData);
+
+            $model->save($newData);
+            $session = session();
+            $session->setFlashdata('success', 'Successful Registration');
+             return redirect()->to('/');
+
+         }
+        }
     }
 
     /**
@@ -93,46 +152,10 @@ class AlunoController extends ResourceController
      *
      * @return mixed
      */
-    public function cad_aluno(){
-
-        //criar cod aluno cpf + cod do curso
-		$data = [];
-		helper(['form']);
-
-		if ($this->request->getMethod() == 'post') {
-			//let's do the validation here
-			$rules = [
-				'firstname' => 'required|min_length[3]|max_length[20]',
-				'lastname' => 'required|min_length[3]|max_length[20]',
-				'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
-				'password' => 'required|min_length[8]|max_length[255]',
-				'password_confirm' => 'matches[password]',
-                'cod_aluno' => 'is_unique[aluno.cod_aluno]',                 
-			];
-
-			if (! $this->validate($rules)) {
-				$data['validation'] = $this->validator;
-			}else{
-				$model = new AlunoModel();
-
-				$newData = [
-					'firstname' => $this->request->getVar('firstname'),
-					'lastname' => $this->request->getVar('lastname'),
-					'email' => $this->request->getVar('email'),
-					'password' => $this->request->getVar('password'),
-				];
-				$model->save($newData);
-				$session = session();
-				$session->setFlashdata('success', 'Successful Registration');
-				return redirect()->to('/');
-
-			}
-		}
-        echo view('templates/header', $data);
-        echo view('aluno/cad_aluno');
-        echo view('templates/footer');
-
-		
+    public function cad_aluno()
+    {
+        echo view('templates/header');
+        echo view('aluno/form_cad_aluno');
 	}
 
     /**
@@ -160,8 +183,15 @@ class AlunoController extends ResourceController
      *
      * @return mixed
      */
-    public function delete($id = null)
+    public function delete($id_aluno = null)
     {
-        //
+        if($this->alunoModel->delete($id_aluno)){
+            $data['messages'] = ['message' => 'Aluno excluido'];
+            echo view('templates/header');
+            return view('aluno/lista_aluno', $data); 
+        } else{
+            echo 'erro';
+        }
+    
     }
 }

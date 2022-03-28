@@ -40,7 +40,3 @@ class P_Situacao extends Migration
         $this->forge->dropTable('p_situacao');
     }
 }
-
-
-// ERROR - 2022-02-10 07:33:25 --> Unknown table 'ava.cursos'
-// ERROR - 2022-02-10 07:33:25 --> Incorrect table definition; there can be only one auto column and it must be defined as a key

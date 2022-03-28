@@ -5,6 +5,7 @@ use App\Models\UserModel;
 use App\Libraries\Hash;
 
 
+
 use CodeIgniter\Validation\Validation;
 
 class Auth extends BaseController
@@ -160,6 +161,7 @@ class Auth extends BaseController
             $user_info = $userModel->where('username', $username)->first();
             $check_password = Hash::check($password, $user_info['password']);
 
+            // dd($user_info);
             if(!$check_password){
                 session()->setFlashdata('fail', 'Senha incorreta!');
                 return redirect()->to('/auth')->withInput();
@@ -167,7 +169,8 @@ class Auth extends BaseController
                 $id_user = $user_info['id_user'];
                 $id_user_tipo = $user_info['id_user_tipo'];
                 session()->set('loggedUser', $id_user);
-                //dd(session());
+                session()->set('tipoUser', $id_user_tipo);
+                // dd(session());
                 return redirect()->to('home/logado');
             }
         }

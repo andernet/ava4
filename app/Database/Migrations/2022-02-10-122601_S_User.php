@@ -72,5 +72,4 @@ class S_User extends Migration
         $this->forge->dropTable('s_user');
     }
 
-    #
 }

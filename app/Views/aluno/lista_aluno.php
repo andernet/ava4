@@ -16,7 +16,10 @@
         </tr>
     </thead>
     <tfoot>
-        <?php foreach ($aluno as $dados) : ?>
+
+        <?php
+        if(isset($aluno)){ 
+        foreach ($aluno as $dados) : ?>
             <tr>
                 <td><?php echo $dados['id_aluno'] ?></td>
                 <td><?php echo $dados['tratamento'].' '.$dados['quadro'].' '.$dados['posto_sigla'].' '.$dados['especialidade'].' '.$dados['nome_aluno'] ?></td>
@@ -29,9 +32,9 @@
                 <td><?php echo $dados['cod_verificacao'] ?></td>
 
                 <td>
-                    <?php echo anchor('user/edit/' . $dados['id_aluno'], 'Editar', ['class' => 'btn btn-primary']) ?>
+                    <?php echo anchor('AlunoController/edit/' . $dados['id_aluno'], 'Editar', ['class' => 'btn btn-primary']) ?>
                         -
-                    <?php echo anchor('user/delete/' . $dados['id_aluno'], "<button type='button' class='btn btn-danger'>Excluir</button>", ['onclick' => 'return confirma()']) ?>
+                    <?php echo anchor('AlunoController/delete/' . $dados['id_aluno'], "<button type='button' class='btn btn-danger'>Excluir</button>", ['onclick' => 'return confirma()']) ?>
                         -
 
                     <?php //echo anchor('CertificadoController/geraCertificado/' . $dados['cod_aluno'], 'Gerar', ['class' => 'btn btn-info', 'target'=>'_blank', 'onclick' => 'return gerar()']) 
@@ -43,6 +46,11 @@
                 </td>
             </tr>
         <?php endforeach; ?>
+    <?php } else { ?>
+        <tr><td> Nao existe alunos </td></tr>
+
+<?php    }?>
+
     </tfoot>
     </table>
     <?php //echo $pager->links(); ?>

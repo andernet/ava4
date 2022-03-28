@@ -57,6 +57,11 @@ class S_Aluno extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
+            'id_user_tipo'    => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'   => true,
+            ],
             'saram'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
@@ -77,23 +82,18 @@ class S_Aluno extends Migration
 
         $this->forge->addKey('id_aluno', true);
 
-        $this->forge->addForeignKey('id_curso', 'p_curso', 'id_curso');
-        $this->forge->addForeignKey('id_tratamento', 'p_tratamento', 'id_tratamento');
-        $this->forge->addForeignKey('id_posto', 'p_posto', 'id_posto');
-        $this->forge->addForeignKey('id_quadro', 'p_quadro', 'id_quadro');
-        $this->forge->addForeignKey('id_especialidade', 'p_especialidade', 'id_especialidade');
-        $this->forge->addForeignKey('id_om', 'p_om', 'id_om');
-        $this->forge->addForeignKey('id_situacao', 'p_situacao', 'id_situacao');
-
-
-
-
-
+        // $this->forge->addForeignKey('id_curso', 'p_curso', 'id_curso', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('id_tratamento', 'p_tratamento', 'id_tratamento', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('id_posto', 'p_posto', 'id_posto', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('id_quadro', 'p_quadro', 'id_quadro', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('id_especialidade', 'p_especialidade', 'id_especialidade', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('id_om', 'p_om', 'id_om', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('id_situacao', 'p_situacao', 'id_situacao', 'CASCADE', 'CASCADE');
 
 
         $this->forge->createTable('s_aluno', false);
 
-        $this->db->query("INSERT INTO `s_aluno` (`id_aluno`, `nome_aluno`, `cpf`, `id_curso`, `id_tratamento`, `id_posto`, `id_quadro`, `id_especialidade`, `id_om`, `id_situacao`, `saram`, `cod_aluno`, `password`) VALUES (NULL, '1', '15478968745', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1')");
+        $this->db->query("INSERT INTO `s_aluno` (`id_aluno`, `nome_aluno`, `cpf`, `id_curso`, `id_tratamento`, `id_posto`, `id_quadro`, `id_especialidade`, `id_om`, `id_situacao`, `id_user_tipo`, `saram`, `cod_aluno`, `password`, `created_at`, `updated_at`) VALUES (NULL, 'nome teste', '123456', '1', '1', '1', '1', '1', '1', '1', '1', '123456', '25252', '252555', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
     }
 
     public function down()
@@ -101,6 +101,3 @@ class S_Aluno extends Migration
         $this->forge->dropTable('s_aluno');
     }
 }
-
-// ERROR - 2022-02-10 07:33:25 --> Unknown table 'ava.aluno'
-// ERROR - 2022-02-10 07:33:25 --> Incorrect table definition; there can be only one auto column and it must be defined as a key
