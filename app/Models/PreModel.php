@@ -12,11 +12,17 @@ class PreModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
         'cod_aluno',
-        'mycheck',
+        'id_curso',
+        'conhecimento_deste_curso',
+        'conhecimento_deste_curso_outro',
+        'interesse',
+        'expectativa_conhecimentos',
+        'facilidades_dificuldades',
+        'aplicacao_conhecimentos',
     ];
 
     // Dates

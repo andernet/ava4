@@ -2,10 +2,31 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Form_helper;
 use App\Controllers\BaseController;
+use App\Models\AlunoModel;
+use App\Models\PosModel;
+use App\Models\PreModel;
+use App\Models\Ava_cursoModel;
+use App\Models\Respostas_avaModel;
+
+
 
 class AvaController extends BaseController
 {
+
+    function __construct(){
+        
+        /* Loading user modal and session library */
+        $this->model = new AlunoModel();
+        $this->model = new PosModel();
+        $this->model = new PreModel();
+        $this->model = new Ava_cursoModel();
+        $this->model = new Respostas_avaModel();
+  
+        
+
+    }
     public function index()
     {
         //
@@ -40,29 +61,29 @@ class AvaController extends BaseController
 
     public function save_pre()
     {
-        echo view('templates/header');
-        return view('ava/register');
+        $this->model->init_insert($this->request->getVar());
+        return redirect()->to('home/logado');
     }
 
 
     public function save_ava_int()
     {
         echo view('templates/header');
-        return view('ava/register');
+        return redirect()->to('home/logado');
     }
 
 
     public function save_curso()
     {
         echo view('templates/header');
-        return view('ava/register');
+        return redirect()->to('home/logado');
     }
 
 
     public function save_pos()
     {
         echo view('templates/header');
-        return view('ava/register');
+        return redirect()->to('home/logado');
     }
 
     public function create(){

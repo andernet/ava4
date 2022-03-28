@@ -5,10 +5,9 @@
 </header>
 <body>
 <section>
-
+<br />
 </section>
-welcome
-<a  href="<?= site_url("/auth/") ?>">Login</a>
+<center><img src= '/img/dom.png'  height=”200” width=”200”></center>
 
 </footer>
 

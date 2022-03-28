@@ -8,6 +8,24 @@
       <link rel="stylesheet" type="text/css" href="/css/style.css">
       <title></title>
       <script>
+
+
+        function checkCurso(){
+          if (form2.curso.value == ""){
+            alert("Selecione o curso!");
+            form2.curso.focus();
+          }
+          return;
+        }
+
+        function checkCurso(){
+    if (form2.curso.value == ""){
+      alert("Selecione o curso!");
+      form2.curso.focus();
+    }
+    return;
+  }
+
          function confirma() {
              if (!confirm('Desejar excluir o usuário?')) {
                  return false;
@@ -85,26 +103,24 @@
                <?php else: ?>
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-         <a class="nav-link" href="/AvaController/pre">Pre Curso</a>
+         <a class="nav-link" href="/AvaController/pre">PRÉ CURSO</a>
       </li>
 
-
-
          
                   <li class="nav-item">
-         <a class="nav-link" href="/AvaController/ava_int">Avaliacao da instrucao</a>
+         <a class="nav-link" href="/AvaController/ava_int">AVALIAÇÃO DE INSTRUÇÃO</a>
 </li>
 
 
          
                   <li class="nav-item">
-         <a class="nav-link" href="/AvaController/ava_curso">Avaliacao do curso</a>
+         <a class="nav-link" href="/AvaController/ava_curso">AVALIAÇÃO FINAL DO CURSO</a>
 </li>
 
 
          
                   <li class="nav-item">
-         <a class="nav-link" href="/AvaController/cad_user">Pos Curso</a>
+         <a class="nav-link" href="/AvaController/pos">PÓS CURSO</a>
 </li>
 </ul>
                <?php endif; ?>
